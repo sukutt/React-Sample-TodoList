@@ -1,19 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TodoListTemplate from './components/TodoListTemplate';
+import RegisterForm from './components/RegisterForm';
+import TodoList from './components/TodoList';
 
 class App extends Component {
+  state = {
+    id: 0,
+    todoList: [],
+  }
+
+  handleCreate = (content) => {
+    this.setState((prevState) => ({
+      todoList: prevState.todoList.concat({
+        id: prevState.id++,
+        content,
+        checked: false,
+      })
+    }));
+  }
+
+  handleRemove = (id) => {
+    this.setState((prevState) => ({
+      todoList: prevState.todoList.filter((item) => {
+        return item.id !== id;
+      })
+    }));
+  }
+
+  handleCheck = (id) => {
+    this.setState((prevState) => ({
+      todoList: prevState.todoList.map((item) => {
+        if (id === item.id) {
+          item.checked = !item.checked;
+        }
+
+        return item;
+      })
+    }));
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <TodoListTemplate form={<RegisterForm onCreate={this.handleCreate}/>}>
+        <TodoList todoItems={this.state.todoList} onCheck={this.handleCheck} onRemove={this.handleRemove}/>
+      </TodoListTemplate>
     );
   }
 }
