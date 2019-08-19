@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 class TodoItem extends Component {
@@ -44,7 +44,7 @@ const CheckMark = styled.div`
     font-size: 1.5rem;
     line-height: 1rem;
     margin-left: 1rem;
-    color: #3bc9db;
+    color: #4263eb;
     font-weight: 800;
 `;
 
@@ -57,7 +57,7 @@ const Item = styled.div`
     user-select: none;
 
     &:hover {
-        background: #e3fafc;
+        background: #f3f0ff;
 
         ${RemoveButton} {
             opacity: 1;
@@ -72,7 +72,7 @@ const Item = styled.div`
 const TextDiv = styled.div`
     flex: 1; /* 체크, 엑스를 제외한 공간 다 채우기 */
     word-break: break-all;
-    ${props => 
+    ${props =>
         props.checked && `
         text-decoration: line-through;
         color: #adb5bd;

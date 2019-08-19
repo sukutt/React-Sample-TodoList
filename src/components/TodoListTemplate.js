@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Header from './Header';
 import styled from 'styled-components';
 
 class TodoListTemplate extends Component {
     render() {
-        const {form, children} = this.props;
+        const { form, children } = this.props;
         return (
             <Template>
                 <Header />
@@ -29,7 +29,7 @@ const Template = styled.div`
 
 const FormSection = styled.section`
     padding: 1rem;
-    border-bottom: 1px solid #22b8cf;
+    border-bottom: 1px solid #e5dbff;
 `;
 
 const TodoListSection = styled.section`
